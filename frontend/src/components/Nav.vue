@@ -1,0 +1,112 @@
+<template>
+  <div>
+      <i @click="openNav()" class="el-icon-menu ic"></i>
+      <div class="sidebar">
+
+      </div>
+    <div class="nav">
+      <img class="logo" src="../img/logo.png" alt="GEORGICA LOGO" />
+      <div class="buttons">
+        <button class="btn noselect">TEST</button>
+        <button class="btn noselect">TEST</button>
+        <button class="btn noselect">TEST</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Nav",
+  methods: {
+      openNav() {
+          const div = document.getElementById("sidebar");
+          div.classList.remove("ascuns");
+          div.classList.add("vede");
+      }
+  }
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.nav {
+  margin: 0;
+  padding: 0;
+  width: 80px;
+  height: 100vh;
+  background-color: #212121;
+  -webkit-box-shadow: 15px 0px 27px -5px rgba(0, 0, 0, 0.48);
+  box-shadow: 15px 0px 27px -5px rgba(0, 0, 0, 0.48);
+}
+
+.logo {
+  width: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.btn {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border: 3px solid #9248d4;
+  background-color: transparent;
+  color: #9248d4;
+  transition: 0.3s;
+}
+
+.ic {
+ opacity: 0;
+}
+
+.sidebar {
+    
+}
+
+.btn:hover {
+  background-color: #9248d4;
+  color: #212121;
+  -webkit-box-shadow: 0px 0px 27px 7px rgba(186, 138, 227, 0.48);
+  box-shadow: 0px 0px 27px 7px rgba(186, 138, 227, 0.48);
+}
+
+@media only screen and (max-width: 600px) {
+  .nav {
+    display: none;
+  }
+
+  .ic {
+    opacity: 1;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0%;
+    left: 100%;
+    transform: translateX(-100%);
+    font-size: 32px;
+  }
+}
+
+.buttons {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+</style>
