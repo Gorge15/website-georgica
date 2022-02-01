@@ -1,15 +1,12 @@
 <template>
   <div>
-      <i @click="openNav()" class="el-icon-menu ic"></i>
-      <div class="sidebar">
 
-      </div>
     <div class="nav">
       <img class="logo" src="../img/logo.png" alt="GEORGICA LOGO" />
       <div class="buttons">
-        <button class="btn noselect">TEST</button>
-        <button class="btn noselect">TEST</button>
-        <button class="btn noselect">TEST</button>
+        <button id="btn1" class="btn noselect">TEST</button>
+        <button id="btn2" class="btn noselect">TEST</button>
+        <button id="btn3" class="btn noselect">TEST</button>
       </div>
     </div>
   </div>
@@ -18,13 +15,34 @@
 <script>
 export default {
   name: "Nav",
+  data() {
+    return {
+      i: 0,
+    }
+  },
   methods: {
-      openNav() {
-          const div = document.getElementById("sidebar");
-          div.classList.remove("ascuns");
-          div.classList.add("vede");
-      }
-  }
+    openNav() {
+      const div = document.getElementById("sidebar");
+      div.classList.remove("ascuns");
+      div.classList.add("vede");
+    },
+  },
+    mounted: async function () {
+    console.log("merge");
+    
+    let btn1 = document.getElementById("btn1");
+    let btn2 = document.getElementById("btn2");
+    let btn3 = document.getElementById("btn3");
+
+    setInterval(() => {
+      if (this.i === 350) this.i = 0;
+      this.i++;
+
+      btn1.style["border"] = `3px solid hsl(${this.i}, 100%, 50%)`;
+      btn2.style["border"] = `3px solid hsl(${this.i}, 100%, 50%)`;
+      btn3.style["border"] = `3px solid hsl(${this.i}, 100%, 50%)`;
+    }, 10);
+  },
 };
 </script>
 
@@ -57,11 +75,10 @@ export default {
 }
 
 .ic {
- opacity: 0;
+  opacity: 0;
 }
 
 .sidebar {
-    
 }
 
 .btn:hover {

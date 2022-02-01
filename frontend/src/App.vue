@@ -2,17 +2,11 @@
   <div class="main-container">
     <Nav />
     <div class="body-container">
-      <img src="./assets/logo.png" />
+      <img src="./img/logo.png" style="width: 250px; height: 250px" />
       <div>
-        <p>
-          If Element Plus is successfully added to this project, you'll see an
-          <code v-text="'<el-button>'"></code>
-          below
-        </p>
-        <el-button @click="functie()" type="primary">el-button</el-button>
-        <router-link to="/about">ABOUT</router-link>
+        <br />
+        <h1 id="welcome" class="welcome-text">Coming soon{{ soon }}</h1>
       </div>
-      <HelloWorld msg="Welcome to Your Vue.js App" />
     </div>
   </div>
 </template>
@@ -31,13 +25,32 @@ export default {
   data() {
     return {
       test: "",
+      soon: "",
+      i: 0,
     };
   },
   methods: {
     async functie() {
       let data = await axios.get("http://localhost:8082/test");
-      console.log(data.data.data);
+      console.log(data);
     },
+  },
+  mounted: async function () {
+    console.log("merge");
+    let wl = document.getElementById("welcome");
+
+    setInterval(() => {
+      if (this.i === 350) this.i = 0;
+      this.i++;
+
+      wl.style["background-color"] = `hsl(${this.i}, 100%, 50%)`;
+      console.log(this.i);
+      if (this.soon === "...") {
+        this.soon = "";
+      } else {
+        this.soon = this.soon + ".";
+      }
+    }, 10);
   },
 };
 </script>
@@ -48,18 +61,17 @@ export default {
   padding: 0;
 }
 
-
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #9f50a4;
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
+  background-color: #3d3d3d;
 }
 
 .main-container {
@@ -69,6 +81,10 @@ export default {
 }
 
 .body-container {
-  margin: auto
+  margin: auto;
+}
+
+.welcome-text {
+  background-color: hsl(347, 100%, 50%);
 }
 </style>
