@@ -5,7 +5,7 @@
       <img src="./img/logo.png" style="width: 250px; height: 250px" />
       <div>
         <br />
-        <h1 id="welcome" class="welcome-text">Coming soon{{ soon }}</h1>
+        <h1 id="welcome" @click="functie()" class="welcome-text">Coming soon{{ soon }}</h1>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@ export default {
     },
   },
   mounted: async function () {
-    console.log("merge");
+    // console.log("merge");
     let wl = document.getElementById("welcome");
 
     setInterval(() => {
@@ -44,7 +44,7 @@ export default {
       this.i++;
 
       wl.style["background-color"] = `hsl(${this.i}, 100%, 50%)`;
-      console.log(this.i);
+      // console.log(this.i);
       if (this.soon === "...") {
         this.soon = "";
       } else {
